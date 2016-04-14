@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
  
 @section('content')
     This is my /resources/views/image/create.blade.php file!
