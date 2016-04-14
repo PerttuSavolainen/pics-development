@@ -1,82 +1,127 @@
 <!DOCTYPE html>
 <html lang="fi">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Etusivu - Pics</title>
 
-    <title>Pics</title>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- own css -->
+        <link href="{{{ secure_asset('css/styles.css') }}}" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
-
-    <!-- Styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
-</head>
-<body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Pics
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        
+        <div id="form-login" class="transp-black-bg fixed-full">
+            <div class="login-register-wrapper dark-gray-bg light-shadow trans-centered">
+                <div class="color-line-pics-login of-hidden"><div></div></div>
+                <form class="">
+                    <button type="button" id="close-login" class="btn btn-link close-form">X</button>
+                    <h3>Kirjaudu sisään</h3>
+                    <div class="form-group">
+                        <label for="username-login" class="sr-only">Käyttäjätunnus</label>
+                        <input type="text" id="username-login" class="form-control button-pics" placeholder="Käyttäjätunnus">    
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passwd-login" class="sr-only">Salasana</label>
+                        <input type="password" id="passwd-login" class="form-control button-pics" placeholder="Salasana">  
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default button-pics c1-bg">Kirjaudu sisään</button><button type="button" class="btn btn-link">Rekisteröidy</button>    
+                    </div>
+                </form>
+            
             </div>
         </div>
-    </nav>
+        
+        <div id="form-register" class="transp-black-bg fixed-full">
+            <div class="login-register-wrapper dark-gray-bg light-shadow trans-centered">
+                <div class="color-line-pics-login of-hidden"><div></div></div>
+                <form class="">
+                    <button type="button" id="close-register" class="btn btn-link close-form">X</button>
+                    <h3>Rekisteröidy</h3>
+                    <div class="form-group">
+                        <label for="username-register" class="sr-only">Käyttäjätunnus</label>
+                        <input type="text" id="username-register" class="form-control button-pics" placeholder="Käyttäjätunnus">    
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="passwd-register" class="sr-only">Salasana</label>
+                        <input type="password" id="passwd-register" class="form-control button-pics" placeholder="Salasana">  
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default button-pics c1-bg">Rekisteröidy</button>    
+                    </div>
+                </form>
+            
+            </div>
+        </div>
+    
+        <nav id="nav" class="navbar navbar-inverse navbar-static-top nav-pics light-shadow of-hidden">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand nav-logo" href="{{ url('/') }}">Pics</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav nav-padding">
+                <li class="active active-pics"><a href="{{ url('/') }}">Etusivu <span class="sr-only">(current)</span></a></li>
+                <li><a href="{{ url('/index.php/image') }}">Kuvat</a></li>  
+                <li><a href="{{ url('/info') }}">Tietoa sivusta</a></li>
+            
+              </ul>
+              
+              <ul class="nav navbar-nav navbar-right">
+                <div class="login-wrapper">
+                    <button id="login-btn" type="button" class="btn btn-link">Kirjaudu</button> | <button id="register-btn" type="button" class="btn btn-link">Rekisteröidy</button>
+                </div>  
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group search-pics">
+                        <div>
+                            <label for="pics-search" class="sr-only">Haku</label>
+                            <input id="pics-search" type="text" class="form-control button-pics" placeholder="Hae...">
+                        </div>
+                        <button type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>    
+                    </div>
+                </form>
+              </ul>
+            </div><!-- /.navbar-collapse -->  
+          </div><!-- /.container-fluid -->
+          <div class="color-line-pics"><div></div></div>    
+        </nav> 
+
 
     @yield('content')
+    
+    <footer style="padding: 5rem;">
+        
+    </footer> 
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script src="{{{ secure_asset('js/main.js') }}}" async></script>
 </body>
 </html>

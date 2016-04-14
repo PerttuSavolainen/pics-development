@@ -23,4 +23,9 @@ class ImageController extends Controller
     {
         return view('image.index');
     }
+    
+    public function create()
+    {
+        return view('image.create');
+    }
 }
