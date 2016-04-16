@@ -30,6 +30,7 @@ class CreateUserImageMessageTables extends Migration
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade'); // when user is deleted, so is user's images
             $table->string('image_url')->default('');
             $table->string('category')->default('');
+            $table->integer('download_count')->unsigned()->default(0);
         });
         
         Schema::create('message', function (Blueprint $table) {

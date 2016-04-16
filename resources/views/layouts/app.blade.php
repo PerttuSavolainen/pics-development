@@ -21,7 +21,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body>
+    <body class="darker-gray-bg">
         
         <div id="form-login" class="transp-black-bg fixed-full">
             <div class="login-register-wrapper dark-gray-bg light-shadow trans-centered">

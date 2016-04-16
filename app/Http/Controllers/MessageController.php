@@ -24,19 +24,19 @@ class MessageController extends Controller
 
     }
     
-    public function show(Image $image, Message $msg) {
-        return view('message.show', compact('image', 'msg'));
+    public function show(Image $image, Message $message) {
+        return view('message.show', compact('image', 'message'));
     }    
     
-    public function edit(Image $image, Message $msg) {
-        return view('message.edit', compact('image', 'msg'));
+    public function edit(Image $image, Message $message) {
+        return view('message.edit', compact('image', 'message'));
     }  
     
-    public function update(Image $image, Message $msg) {
+    public function update(Image $image, Message $message) {
         
     }  
     
-    public function destroy(Image $image, Message $msg) {
+    public function destroy(Image $image, Message $message) {
         
     }     
     
