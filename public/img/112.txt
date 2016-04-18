@@ -1,0 +1,8 @@
+Savolainen-Perttu:H8289:IDM14S1
+Teht:Pist:Max
+h09t01:4:4
+h09t02:4:4
+h09t03:3:4
+h09t04:4:4
+h09t05:4:4
+h09t06:4:8

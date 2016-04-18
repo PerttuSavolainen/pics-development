@@ -10,6 +10,10 @@ use App\Message;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Input;
+use Redirect;
+use Session;
+
 class MessageController extends Controller
 {
     public function index(Image $image) {

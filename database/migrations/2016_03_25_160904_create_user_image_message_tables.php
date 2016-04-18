@@ -28,9 +28,11 @@ class CreateUserImageMessageTables extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->default(0);
             $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade'); // when user is deleted, so is user's images
+            $table->string('alt_text')->default('');
             $table->string('image_url')->default('');
             $table->string('category')->default('');
             $table->integer('download_count')->unsigned()->default(0);
+            $table->timestamps();
         });
         
         Schema::create('message', function (Blueprint $table) {
@@ -40,6 +42,7 @@ class CreateUserImageMessageTables extends Migration
             $table->foreign('user_id')->references('id')->on('user'); // user's messages won't be deleted when user is deleted
             $table->integer('image_id')->unsigned()->default(0);
             $table->foreign('image_id')->references('id')->on('image')->onDelete('cascade'); // when image is deleted, linked messages are also
+            $table->timestamps();
         });        
     }
 

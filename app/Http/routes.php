@@ -11,20 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-// resourcing and nested resources
-Route::resource('user', 'UserController');
-Route::resource('image', 'ImageController');
-// messages belongs to on its own image (this is called resource nesting)
-Route::resource('image.message', 'MessageController'); 
-
-// bind slug-based urls instead id
-Route::bind('user', function($value, $route) {
-    return App\User::whereSlug($value)->first();
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +25,27 @@ Route::bind('user', function($value, $route) {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+   
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    
+    Route::get('/info', function () {
+        return view('info');
+    });
+    
+    // resourcing and nested resources
+    Route::resource('user', 'UserController');
+    Route::resource('image', 'ImageController');
+    // messages belongs to on its own image (this is called resource nesting)
+    Route::resource('image.message', 'MessageController'); 
+    
+    // bind slug-based urls instead id
+    Route::bind('user', function($value, $route) {
+        return App\User::whereSlug($value)->first();
+    });
+    
+    
 });
 
 Route::group(['middleware' => 'web'], function () {

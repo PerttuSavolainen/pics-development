@@ -87,9 +87,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav nav-padding">
-                <li class="active active-pics"><a href="{{ url('/') }}">Etusivu <span class="sr-only">(current)</span></a></li>
-                <li><a href="{{ url('/index.php/image') }}">Kuvat</a></li>  
-                <li><a href="{{ url('/info') }}">Tietoa sivusta</a></li>
+                <li class="{{ Helper::set_nav_active('/') }}"><a href="{{ url('/') }}">Etusivu</a></li>
+                <li class="{{ Helper::set_nav_active('/index.php/image') }}"><a href="{{ url('/index.php/image') }}">Kuvat</a></li>  
+                <li class="{{ Helper::set_nav_active('/index.php/info') }}"><a href="{{ url('/info') }}">Tietoa sivusta</a></li>
             
               </ul>
               
@@ -111,9 +111,32 @@
           </div><!-- /.container-fluid -->
           <div class="color-line-pics"><div></div></div>    
         </nav> 
+        
+    @if (!Request::is('/'))    
+        <header class="hero-mini of-hidden">
+            @if (Session::has('message'))
+            <div class="flash alert alert-info alert-pics light-shadow">
+                <p>{{ Session::get('message') }}</p>
+            </div>
+            @endif
+        </header>    
 
+    @else
+        <header id="hero" class="hero of-hidden">
+            <object class="pics-logo-animation trans-centered" type="image/svg+xml" data="logo_bg_2.svg"></object> 
+            @if (Session::has('message'))
+                <div class="flash alert alert-info alert-pics light-shadow">
+                    <p>{{ Session::get('message') }}</p>
+                </div>
+            @endif
+        </header>
+    @endif    
 
-    @yield('content')
+    <div class="content">
+
+        @yield('content')
+        
+    </div>    
     
     <footer style="padding: 5rem;">
         
@@ -123,5 +146,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="{{{ secure_asset('js/main.js') }}}" async></script>
+    @if (Request::is('/'))
+        <script src="{{{ secure_asset('js/index.js') }}}" async></script>
+    @endif    
+    
+    
 </body>
 </html>

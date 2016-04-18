@@ -13,18 +13,18 @@
                         
                         <form class="">
                             <h2>Kuvat</h2>
+                            <!--
                             <div class="form-group">
                                 <label for="search-word" class="sr-only">Hakusana</label>
                                 <input type="text" id="search-word" class="form-control button-pics" placeholder="Hakusanat...">    
-                            </div>
+                            </div>-->
                             
-                            <div class="form-group">
-                                <!--<label for="passwd-login" class="sr-only">Kategoria</label>
-                                <input type="radio" id="passwd-login" class="form-control button-pics" placeholder="Salasana">-->  
-                            </div>
-                            
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-default button-pics c1-bg">Hae</button>    
+                            <div class="form-group search-pics">
+                                <div>
+                                    <label for="pics-search" class="sr-only">Hakusanat</label>
+                                    <input id="pics-search" type="text" class="form-control button-pics" placeholder="Hakusanat...">
+                                </div>
+                                <button type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>    
                             </div>
                         </form>
                     </div> 
@@ -42,7 +42,7 @@
                                 <img src="{{ URL::asset($image->image_url) }}" class="landscape trans-centered"/>
                                 <div class="img-info button-pics">
                                     <i class="fa fa-download"></i> {!! $image->download_count !!} <!-- tähän latausmäärä -->
-                                    <i class="fa fa-comments"></i><!-- tämä kesken!! {!! $image->messages->count() !!} <!-- tähän kommenttien määrä -->
+                                    <i class="fa fa-comments"></i><!-- tämä kesken!! {!!$image->messages !!} <!-- tähän kommenttien määrä -->
                                 </div>
                             </div>    
                         </div>

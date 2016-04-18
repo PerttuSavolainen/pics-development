@@ -23,8 +23,7 @@ $(function(){
     // if a page is scrolled when loaded
     navbarEvents(amount, navHeight, lineScroll);
     
-    // load first set of images when loaded
-    loadImages(AJAX_IMG_AMOUNT);
+    
     
     // scroll events
     $(window).scroll(function(){
@@ -36,17 +35,7 @@ $(function(){
         scrollAmount = amount/(bodyHeight-wHeight);
         lineScroll = scrollAmount*lineWidth-SCROLLBAR;
         navbarEvents(amount, navHeight, lineScroll);
-        
-        var imgWrapperBottom = $("#ajaxImageWrapper").offset().top + $("#ajaxImageWrapper").height();
-        
-        // set ajax call
-        if ((amount+wHeight) >= imgWrapperBottom) {
-            if (calls < 2) {
-                loadImages(AJAX_IMG_AMOUNT);
-                calls++;
-            }
-        }
-        
+
     });
     
     $(window).resize(function(){
@@ -61,12 +50,6 @@ $(function(){
             navbarEvents(amount, navHeight, lineScroll);
         }, 250);
         
-    });
-    
-    // load images and reset calls variable
-    $("#loadMoreImages").click(function(){
-        loadImages(AJAX_IMG_AMOUNT);
-        calls = 0;                      
     });
     
     // hide current form
@@ -104,33 +87,6 @@ $(function(){
         });        
     }
     
-    // makes ajax call for images 
-    function loadImages(imgAmount, callTime) {
-        
-        $.ajax({
-            url: "loadImages.php",
-            type: "POST",
-            data: {
-                amount: imgAmount,
-                callTime: callTime
-            },
-            success: function(response) {
-                console.log("ajax call success");
-                $("#ajaxImageWrapper").append(response);
-            },
-            error: function(error) {
-                console.log(error);
-                // check if amount of tries is valid
-                if (calls < MAX_CALLS) {
-                    setTimeout(function(){
-                        loadImages(imgAmount);
-                    }, 2000); 
-                }
-                errorCalls++;
-                
-            }
-        });
-    
-    }
+
     
 });
