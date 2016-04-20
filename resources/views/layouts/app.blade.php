@@ -88,15 +88,23 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav nav-padding">
                 <li class="{{ Helper::set_nav_active('/') }}"><a href="{{ url('/') }}">Etusivu</a></li>
-                <li class="{{ Helper::set_nav_active('/index.php/image') }}"><a href="{{ url('/index.php/image') }}">Kuvat</a></li>  
-                <li class="{{ Helper::set_nav_active('/index.php/info') }}"><a href="{{ url('/info') }}">Tietoa sivusta</a></li>
+                <li class="{{ Helper::set_nav_active('/image') }}"><a href="{{ url('/index.php/image') }}">Kuvat</a></li>  
+                <li class="{{ Helper::set_nav_active('/info') }}"><a href="{{ url('/info') }}">Tietoa sivusta</a></li>
+            
+                
             
               </ul>
               
               <ul class="nav navbar-nav navbar-right">
+
                 <div class="login-wrapper">
-                    <button id="login-btn" type="button" class="btn btn-link">Kirjaudu</button> | <button id="register-btn" type="button" class="btn btn-link">Rekisteröidy</button>
+                    @if (Auth::check())
+                       <a class="btn btn-link" href="{{ url('/profile') }}"> Hei, {{ Auth::user()->first_name }}</a> | <a class="btn btn-link" href="{{ url('/logout') }}">Kirjaudu ulos</a>
+                    @else
+                        <a class="btn btn-link" href="{{ url('/login') }}">Kirjaudu</a> | <a class="btn btn-link" href="{{ url('/register') }}">Rekisteröidy</a>
+                    @endif 
                 </div>  
+
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group search-pics">
                         <div>

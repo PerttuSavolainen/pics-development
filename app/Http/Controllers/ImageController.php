@@ -34,9 +34,24 @@ class ImageController extends Controller
 
     }
     
-    public function index() {
-        $images = Image::all();
+    public function index(Request $request = null) {
+        
+
+        if ($request->has('pics-search')) {
+            $search = $request->input('pics-search');
+            // return collection of images
+            $images = Image::where("id", "LIKE", "%$search%")
+                            ->orWhere("alt_text", "LIKE", "%$search%")
+                            ->orWhere("category", "LIKE", "%$search%")->get();
+        }
+
+        else {
+            // return collection of all images
+            $images = Image::all();
+        }
+        
         return view('image.index', compact('images'));
+
     }
     
     public function create() {
@@ -60,22 +75,21 @@ class ImageController extends Controller
             else {
                 if ($request->file('upload-file')->isValid()) {
                     $ext = $request->file('upload-file')->getClientOriginalExtension();
-                    $filename = rand(111, 999) . '.' . $ext;
+                    $filename = rand(111111, 999999) . '.' . $ext;
                     $request->file('upload-file')->move(self::$img_folder, $filename);
                     
                     // other stuff for the database
                     $alt_text = $request->input('alt-text');
+                    $category = $request->input('category');
             
                     $input_data = array(
                         'alt_text' => $alt_text,
+                        'category' => $category,
                         'user_id' => 1,
                         'image_url' => self::$img_folder . "/" . $filename
                     );
                     
                     Image::create($input_data);
-                    
-                    Session::set('msg', 'Kuva lisätty!!!!!!');
-                    Session::save();
                     
                     return Redirect::route('image.index')->with('message', 'Kuva lisätty...');
 
@@ -83,29 +97,28 @@ class ImageController extends Controller
                 
                 else return Redirect::route('image.index')->with('message', 'tiedosto virheellinen...');
             }
-            
- 
-            
-            //$generated_url = ImageHandler::imageResize($img);
-            
 
-            
-            
+            //$generated_url = ImageHandler::imageResize($img);
+
             //$input_data = $request->all(); // WIP
             
-            
             //return Redirect::route('image.index')->with('message', var_dump($img));
-            
-            
-            
-            
+
         }
 
     }
     
     
-    public function show() {
+    public function show($id) {
+        
+        // load collection
+        //$images = Image::where('id', $id)->get();
+        // load single by its primary key
+        $image = Image::find($id);
+        //var_dump($image);
+        
         return view('image.show', compact('image'));
+        //return view('image.show', $image);
     }
     
     public function edit($id) {

@@ -21,6 +21,7 @@ class CreateUserImageMessageTables extends Migration
             $table->string('email')->default('');    
             $table->string('profile_image')->default('');
             $table->tinyInteger('privilege')->unsigned()->default(1);
+            $table->rememberToken(); // for storing a "remember me" token for sessions
             $table->timestamps();
         });
         

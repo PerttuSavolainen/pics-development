@@ -29,6 +29,8 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+    protected $redirectPath = '/';
+    
 
     /**
      * Create a new authentication controller instance.
@@ -46,11 +48,13 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
+        
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'username' => 'required|max:32|unique:user',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',            
+            'email' => 'required|email|max:255|unique:user',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -61,10 +65,12 @@ class AuthController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data) {
+        
         return User::create([
-            'name' => $data['name'],
+            'username' => $data['username'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
