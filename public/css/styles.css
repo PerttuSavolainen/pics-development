@@ -11,6 +11,17 @@
     #3f8dae
 */
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* prevent active input bootstrap feature */
+.form-control:focus {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
 .transp-black-bg {
     background: #000;
     background: rgba(0,0,0,0.75);
@@ -22,6 +33,10 @@
 
 .darker-gray-bg {
     background: #111;
+}
+
+.lighter-gray-bg {
+    background: #333;
 }
 
 .c1-bg {
@@ -213,6 +228,27 @@
     padding: 0;
 }
 
+.img-show-preview {
+    padding: 3rem;
+    text-align: center;
+}
+
+.img-show-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 4rem;
+}
+
+.img-show-preview img {
+    display: inline-block;
+}
+
+.img-details {
+    bottom: -1rem;
+    left: 0; right: 0;
+    position: absolute;
+}
+
 .color-line-pics, .color-line-pics-login {
     background: #3f8dae;
     position: relative;
@@ -342,6 +378,31 @@
 .light-shadow {
     box-shadow: 0 0 4rem #333;
     box-shadow: 0 0 6rem rgba(0,0,0,0.5);
+}
+
+.profile-list-pics  {
+    height: 600px;
+    overflow-y: auto;
+    
+}
+
+.message-field-pics {
+    height: 600px;
+    overflow-y: auto;
+}
+
+.message-pics {
+    margin: 0;
+}
+
+.message-sender {
+    font-weight: 300;
+    color: #3f8dae;
+}
+
+.message-time {
+    font-weight: 300;
+    color: #ccc;
 }
 
 @media (min-width: 420px) {

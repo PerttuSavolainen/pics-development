@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- font -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,400italic,700' rel='stylesheet' type='text/css'>
         <!-- own css -->
         <link href="{{{ secure_asset('css/styles.css') }}}" rel="stylesheet">
 

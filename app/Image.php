@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use DB;
+
 class Image extends Model
 {
     // overrides the default prural-name using in queries
@@ -30,6 +32,22 @@ class Image extends Model
         
         // returns collection of images
         return Image::all()->sortBy('created_at')->skip($offset)->take($amount);
+    }
+    
+    /**
+     * A static method for getting all images with their messages
+     * @return collection of images
+     */
+    public static function getImagesAndMessages($search = '') {
+        /*
+        $images = DB::table('image')
+                    ->join('message', 'image.id', '=', 'message.image_id')
+                    ->select('*')
+                    ->where('alt_text', 'LIKE', "%$search%")
+                    ->get();
+                    
+        return $images;
+        */
     }
     
     

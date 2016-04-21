@@ -39,8 +39,8 @@
                         <div class="img-wrapper-pics">
                             <img src="{{ URL::asset($image->image_url) }}" class="landscape trans-centered"/>
                             <div class="img-info button-pics">
-                                <i class="fa fa-download"></i> {!! $image->download_count !!} <!-- tähän latausmäärä -->
-                                <i class="fa fa-comments"></i><!-- tämä kesken!! {!!$image->messages !!} <!-- tähän kommenttien määrä -->
+                                <i class="fa fa-download"></i> {!! $image->download_count !!} 
+                                <i class="fa fa-comments"></i> {!! $messages_count[$image->id] !!}
                             </div>
                         </div>    
                     </div>

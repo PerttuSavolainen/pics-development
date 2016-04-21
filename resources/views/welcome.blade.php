@@ -17,7 +17,7 @@
                 </p>
             </div> 
             
-            <a href="{{ url('/index.php/image/create') }}"><h4 class="btn btn-default">Lähetä kuva</h4></a>
+            
             
         </div>    
         <div  class="col-md-8 col-lg-9 col-pics of-hidden">

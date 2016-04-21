@@ -14,6 +14,7 @@ use App\Http\Controllers\Controller;
 use App\MyCustomClasses\ImageHandler;
 use App\Helpers;
 
+use Auth;
 use Input;
 use Redirect;
 use Session;
@@ -42,14 +43,24 @@ class ImageController extends Controller
 
         if ($request->has('pics-search')) {
             $images = Image::getSearchImages($request->input('pics-search'));
+            //$images = Image::getImagesAndMessages($request->input('pics-search'));
         }
 
         else {
             // return collection of all images
             $images = Image::all();
+            //$images = Image::getImagesAndMessages();
+            
         }
         
-        return view('image.index', compact('images'));
+        // add a message amount to array
+        foreach ($images as $image) {
+            $msg_count = Message::where("image_id", $image->id)->get()->count();
+            $messages_count[$image->id] = $msg_count; 
+        }
+        
+        return view('image.index', compact('images', 'messages_count'));
+        //return view('image.index', compact('images'));
 
     }
     
@@ -73,6 +84,10 @@ class ImageController extends Controller
             
             else {
                 if ($request->file('upload-file')->isValid()) {
+                    
+                    //$user = Auth::user();
+                    $user = $request->user();
+                    
                     $ext = $request->file('upload-file')->getClientOriginalExtension();
                     $filename = rand(111111, 999999) . '.' . $ext;
                     $request->file('upload-file')->move(self::$img_folder, $filename);
@@ -84,7 +99,7 @@ class ImageController extends Controller
                     $input_data = array(
                         'alt_text' => $alt_text,
                         'category' => $category,
-                        'user_id' => 1,
+                        'user_id' => $user->id,
                         'image_url' => self::$img_folder . "/" . $filename
                     );
                     
@@ -115,6 +130,8 @@ class ImageController extends Controller
         
         // return collection of messages
         $messages = Message::where("image_id", $id)->get();
+        $messages = $messages->sortByDesc('created_at');
+        
 
         return view('image.show', compact('image', 'messages'));
         
