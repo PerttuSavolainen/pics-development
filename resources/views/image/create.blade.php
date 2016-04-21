@@ -1,4 +1,6 @@
 @extends('layouts.app')
+
+@section('title', 'Lisää kuva')
  
 @section('content')
     

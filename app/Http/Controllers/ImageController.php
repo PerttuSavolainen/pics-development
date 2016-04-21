@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Image;
 use App\Message;
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -23,6 +24,9 @@ class ImageController extends Controller
     
     // folder where images will be uploaded
     private static $img_folder = 'img';
+    // how many images will be loaded at a time
+    private static $loadAmount = 2;
+    
     
     /**
      * Create a new controller instance.
@@ -35,14 +39,9 @@ class ImageController extends Controller
     }
     
     public function index(Request $request = null) {
-        
 
         if ($request->has('pics-search')) {
-            $search = $request->input('pics-search');
-            // return collection of images
-            $images = Image::where("id", "LIKE", "%$search%")
-                            ->orWhere("alt_text", "LIKE", "%$search%")
-                            ->orWhere("category", "LIKE", "%$search%")->get();
+            $images = Image::getSearchImages($request->input('pics-search'));
         }
 
         else {
@@ -111,14 +110,14 @@ class ImageController extends Controller
     
     public function show($id) {
         
-        // load collection
-        //$images = Image::where('id', $id)->get();
-        // load single by its primary key
+        // load single image by its primary key
         $image = Image::find($id);
-        //var_dump($image);
         
-        return view('image.show', compact('image'));
-        //return view('image.show', $image);
+        // return collection of messages
+        $messages = Message::where("image_id", $id)->get();
+
+        return view('image.show', compact('image', 'messages'));
+        
     }
     
     public function edit($id) {
@@ -130,6 +129,17 @@ class ImageController extends Controller
     }
     
     public function destroy($id) {
+        
+    }
+    
+    public function loadMoreImages(Request $request) {
+        
+        $offset = $request->file('callTime') * self::$loadAmount;
+        
+        $images = Image::getImagesByDate($offset, self::$loadAmount);
+        
+        return $offset;
+        //return $images;
         
     }
     

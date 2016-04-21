@@ -1,17 +1,18 @@
 @extends('layouts.app')
 
+@section('title', 'Rekisteröidy')
+
 @section('content')
-<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default list-pics">
                 <div class="panel-heading">Rekisteröidy</div>
                 <div class="panel-body">
                     {!! Form::open(['method' => 'post', 'url' => url('/auth/register'), 'role' => 'form']) !!}
                     
                         {!! csrf_field() !!}
 
-                        <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
+                        <div class="form-group form-group-pics{{ $errors->has('first_name') ? ' has-error' : '' }}">
                             {!! Form::label('first_name', 'Etunimi', ['class' => 'sr-only']) !!}
                             {!! Form::text('first_name', null, ['class' => 'form-control button-pics', 
                                                                  'placeholder' => 'Etunimi', 
@@ -25,7 +26,7 @@
                             @endif
                         </div>                        
                         
-                        <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                        <div class="form-group form-group-pics{{ $errors->has('last_name') ? ' has-error' : '' }}">
                             {!! Form::label('last_name', 'Sukunimi', ['class' => 'sr-only']) !!}
                             {!! Form::text('last_name', null, ['class' => 'form-control button-pics', 
                                                                  'placeholder' => 'Sukunimi', 
@@ -39,7 +40,7 @@
                             @endif
                         </div> 
                         
-                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                        <div class="form-group form-group-pics{{ $errors->has('username') ? ' has-error' : '' }}">
                             {!! Form::label('username', 'Käyttäjätunnus', ['class' => 'sr-only']) !!}
                             {!! Form::text('username', null, ['class' => 'form-control button-pics', 
                                                                  'placeholder' => 'Käyttäjätunnus', 
@@ -53,7 +54,7 @@
                             @endif
                         </div>
                         
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group form-group-pics{{ $errors->has('email') ? ' has-error' : '' }}">
                             {!! Form::label('email', 'Sähköposti', ['class' => 'sr-only']) !!}
                             {!! Form::email('email', null, ['class' => 'form-control button-pics', 
                                                                  'placeholder' => 'Sähköposti', 
@@ -67,9 +68,9 @@
                             @endif
                         </div>
                         
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group form-group-pics{{ $errors->has('password') ? ' has-error' : '' }}">
                             {!! Form::label('password', 'Salasana', ['class' => 'sr-only']) !!}
-                            {!! Form::password('password', null, ['class' => 'form-control button-pics', 
+                            {!! Form::password('password', ['class' => 'form-control button-pics', 
                                                                  'placeholder' => 'Salasana', 
                                                                  'value'=> old('password') ]) 
                             !!}
@@ -81,9 +82,9 @@
                             @endif
                         </div>
                         
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+                        <div class="form-group form-group-pics{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             {!! Form::label('password_confirmation', 'Salasana uudelleen', ['class' => 'sr-only']) !!}
-                            {!! Form::password('password_confirmation', null, ['class' => 'form-control button-pics', 
+                            {!! Form::password('password_confirmation', ['class' => 'form-control button-pics', 
                                                                  'placeholder' => 'Salasana uudelleen', 
                                                                  'value'=> old('password_confirmation') ]) 
                             !!}
@@ -96,7 +97,7 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::submit('Rekisteröidy', ['class' => 'btn btn-default button-pics']) !!}
+                            {!! Form::submit('Rekisteröidy', ['class' => 'btn btn-default button-pics send-pics']) !!}
                         </div>
                         
                     </form>
@@ -104,5 +105,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

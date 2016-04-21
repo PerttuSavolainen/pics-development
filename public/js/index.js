@@ -15,11 +15,11 @@ $(function(){
     var scrollAmount = amount/(bodyHeight-wHeight);
     var lineScroll = scrollAmount*lineWidth-SCROLLBAR;
     var resizeTimer;
-    var calls = 0;
+    var calls = 1;
     var errorCalls = 0;
 
     // load first set of images when loaded
-    loadImages(AJAX_IMG_AMOUNT);
+    loadImages(AJAX_IMG_AMOUNT, calls);
     
     $(window).scroll(function(){
         
@@ -29,8 +29,8 @@ $(function(){
 
         // set ajax call
         if ((amount+wHeight) >= imgWrapperBottom) {
-            if (calls < 2) {
-                loadImages(AJAX_IMG_AMOUNT);
+            if (calls < 3) {
+                loadImages(AJAX_IMG_AMOUNT, calls);
                 calls++;
             }
         }
@@ -39,16 +39,22 @@ $(function(){
     // load images and reset calls variable
     $("#loadMoreImages").click(function(){
         loadImages(AJAX_IMG_AMOUNT);
-        calls = 0;                      
+        calls = 1;                      
     });
     
     // makes ajax call for images 
     function loadImages(imgAmount, callTime) {
         
+        // token which is needed for proper post request 
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        
+        console.log("crsf token: " + csrfToken);
+        
         $.ajax({
-            url: "loadImages.php",
+            url: "/loadImages",
             type: "POST",
             data: {
+                _token: csrfToken,
                 amount: imgAmount,
                 callTime: callTime
             },
@@ -56,6 +62,7 @@ $(function(){
                 console.log("ajax call success");
                 $("#ajaxImageWrapper").append(response);
             },
+            
             error: function(error) {
                 console.log(error);
                 // check if amount of tries is valid

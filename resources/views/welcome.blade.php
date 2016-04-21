@@ -1,29 +1,33 @@
 @extends('layouts.app')
 
+@section('title', 'Etusivu')
+
 @section('content')
 
-    <main class="light-shadow of-hidden">
-        <div class="color-line-pics"><div></div></div>
-        <section class="container-fluid container-pics">
-            <div class="row">
-                <div class="col-md-4 col-lg-3">
-                    <div class="col-pics">
-                        <h2>Otsikkoa...</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    </div> 
-                    
-                    <a href="{{ url('/index.php/image/create') }}"><h4 class="btn btn-default">Lähetä kuva</h4></a>
-                    
-                </div>    
-                <div  class="col-md-8 col-lg-9 col-pics of-hidden">
-                    
-                    <div id="ajaxImageWrapper" class="row">
-                        <!-- images will be here via ajax call -->
-                    </div> 
-                    <button id="loadMoreImages" class="btn btn-default button-pics col-md-push-4 col-md-4 c1-bg btn-margin">Lataa lisää...</button>
-                </div>
+    <div class="row">
+        <div class="col-md-4 col-lg-3">
+            <div class="col-pics">
+                <h2>Tervetuloa Pics-valokuvapalveluun</h2>
+                <p>
+                    Palvelussamme voit selata, hakea ja julkaista kuvia sekä kommentoida niitä. 
+                    Rekisteröidy palveluumme kommentoidaksesi ja jakaaksesi kuvia.
+                </p>
                 
-            </div>    
-        </section>
-    </main>  
+                    <a href="{{ url('/register') }}"><h4>Rekisteröidy tästä!</h4></a>
+                </p>
+            </div> 
+            
+            <a href="{{ url('/index.php/image/create') }}"><h4 class="btn btn-default">Lähetä kuva</h4></a>
+            
+        </div>    
+        <div  class="col-md-8 col-lg-9 col-pics of-hidden">
+            
+            <div id="ajaxImageWrapper" class="row">
+                <!-- images will be here via ajax call -->
+            </div> 
+            <button id="loadMoreImages" class="btn btn-default button-pics col-md-push-4 col-md-4 c1-bg btn-margin">Lataa lisää...</button>
+        </div>
+        
+    </div>    
+         
 @endsection

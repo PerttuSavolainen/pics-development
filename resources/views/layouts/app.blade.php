@@ -5,7 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Etusivu - Pics</title>
+        <!-- This is for ajax post request -->
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+        <title>@yield('title') - Pics</title>
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -121,7 +123,7 @@
         </nav> 
         
     @if (!Request::is('/'))    
-        <header class="hero-mini of-hidden">
+        <header class="hero-mini of-hidden hero-pics">
             @if (Session::has('message'))
             <div class="flash alert alert-info alert-pics light-shadow">
                 <p>{{ Session::get('message') }}</p>
@@ -130,7 +132,7 @@
         </header>    
 
     @else
-        <header id="hero" class="hero of-hidden">
+        <header id="hero" class="hero of-hidden hero-pics">
             <object class="pics-logo-animation trans-centered" type="image/svg+xml" data="logo_bg_2.svg"></object> 
             @if (Session::has('message'))
                 <div class="flash alert alert-info alert-pics light-shadow">
@@ -140,14 +142,14 @@
         </header>
     @endif    
 
-    <div class="content">
-
-        @yield('content')
-        
-    </div>    
+    <main class="light-shadow of-hidden">
+        <div class="color-line-pics"><div></div></div>
+            <section class="container-fluid container-pics">
+                @yield('content')
+            </section>
+    </main> 
     
     <footer style="padding: 5rem;">
-        
     </footer> 
 
     <!-- JavaScripts -->

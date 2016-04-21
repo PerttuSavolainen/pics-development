@@ -40,10 +40,19 @@ Route::group(['middleware' => ['web']], function () {
         return view('welcome');
     });
     
+    // index route
+    Route::get('/index', function () {
+        return view('welcome');
+    });
+    
     // info route
     Route::get('/info', function () {
         return view('info');
     });
+    
+    // for the ajax image loading
+    Route::get('/loadImages', 'ImageController@loadMoreImages');
+    Route::post('/loadImages', 'ImageController@loadMoreImages');
     
     // resourcing and nested resources
     Route::resource('user', 'UserController');

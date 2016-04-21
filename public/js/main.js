@@ -57,26 +57,16 @@ $(function(){
         $(this).parent().parent().parent().fadeOut();
         console.log("button clicked");
     });
-    
-    // show login form
-    $("#login-btn").click(function(){
-        $("#form-login").fadeIn();
-    });
-    
-    // show register form
-    $("#register-btn").click(function(){
-        $("#form-register").fadeIn();
-    });
      
     function navbarEvents(amount, navHeight, lineScroll) {
         // navbar events
         if (amount >= NAV_OFFSET) {
             $("#nav").addClass("navbar-fixed-top nav-offset");
-            $("#hero").css("margin-top", 0);
+            $(".hero-pics").css("margin-top", 0);
         }
         else {
             $("#nav").removeClass("navbar-fixed-top nav-offset");  
-            $("#hero").css("margin-top", -navHeight);
+            $(".hero-pics").css("margin-top", -navHeight);
         }
         
         var transformAmount = "translateX(" + lineScroll + "px)";

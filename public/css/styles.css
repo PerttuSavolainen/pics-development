@@ -28,6 +28,31 @@
     background: #29abe2;
 }
 
+.list-pics {
+    background: #222;
+    color: #fff;
+    border-radius: 0;
+    border: none;
+}
+
+.list-pics:nth-child(even) {
+    background: #333;
+}
+
+.list-pics > .panel-heading, .list-pics > .panel-body {
+    background: #222;
+    color: #fff;
+    border: none;
+}
+
+.form-group-pics {
+    margin: 0;
+ }
+ 
+.form-group-pics input {
+    padding: 2.5rem 1.5rem;
+}
+
 .fixed-full {
     position: fixed;
     width: 100%;
@@ -70,6 +95,10 @@
     bottom: 20px;
     width: 100%;
     z-index: 9999;
+}
+
+.send-pics {
+    margin-top: 2rem;
 }
 
 .button-pics {
