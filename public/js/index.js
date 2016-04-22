@@ -46,7 +46,7 @@ $(function(){
     function loadImages(imgAmount, callTime) {
         
         // token which is needed for proper post request 
-        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        /*var csrfToken = $('meta[name="csrf-token"]').attr('content');
         
         console.log("crsf token: " + csrfToken);
         
@@ -55,6 +55,20 @@ $(function(){
             type: "POST",
             data: {
                 _token: csrfToken,
+                amount: imgAmount,
+                callTime: callTime
+            },
+            success: function(response) {
+                console.log("ajax call success");
+                $("#ajaxImageWrapper").append(response);
+            },// token which is needed for proper post request 
+            
+        // WIP - this is for the ajax system for the laravel */  // WIP
+
+        $.ajax({
+            url: "loadImages.php",
+            type: "POST",
+            data: {
                 amount: imgAmount,
                 callTime: callTime
             },

@@ -85,15 +85,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand nav-logo" href="{{ url('/') }}">Pics</a>
+              <a class="navbar-brand nav-logo" href="{{ url('/') }}">
+                  <img class="nav-logo-pics" src="img/logo_white.png" alt="Pics-logo"/>
+              </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav nav-padding">
+              <ul class="nav navbar-nav navbar-links">
                 <li class="{{ Helper::set_nav_active('/') }}"><a href="{{ url('/') }}">Etusivu</a></li>
-                <li class="{{ Helper::set_nav_active('/image') }}"><a href="{{ url('/index.php/image') }}">Kuvat</a></li>  
-                <li class="{{ Helper::set_nav_active('/info') }}"><a href="{{ url('/info') }}">Tietoa sivusta</a></li>
+                <li class="{{ Helper::set_nav_active('image') }}"><a href="{{ url('/image') }}">Kuvat</a></li>  
+                <li class="{{ Helper::set_nav_active('info') }}"><a href="{{ url('/info') }}">Tietoa sivusta</a></li>
             
                 
             

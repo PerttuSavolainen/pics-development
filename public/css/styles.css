@@ -43,6 +43,10 @@ body {
     background: #29abe2;
 }
 
+.c1-color {
+    color: #29abe2;
+}
+
 .list-pics {
     background: #222;
     color: #fff;
@@ -159,13 +163,13 @@ body {
 }
 
 #loadMoreImages.button-pics:before {
-    border-right: 1rem solid #29abe2;
+    border-right: 1rem solid #999;
     border-top: 1.65rem solid transparent;
     border-bottom: 1.65rem solid transparent;    
 }
 
 #loadMoreImages.button-pics:after {
-    border-left: 1rem solid #29abe2;
+    border-left: 1rem solid #999;
     border-top: 1.65rem solid transparent;
     border-bottom: 1.65rem solid transparent;    
 }
@@ -174,8 +178,44 @@ body {
     margin: 2rem 0;
 }
 
+.navbar-inverse .navbar-nav>.active>a, 
+.navbar-inverse .navbar-nav>.active>a:hover {
+    color: #222;
+    background: #29abe2;
+    transition: all 0.5s;
+}
+
+.navbar-inverse .navbar-nav>.active>a:hover {
+    background: #fff;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    padding-top: 5rem;
+    transition: all 0.5s;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    padding-top: 5rem;
+    background: #fbb03b;
+    color: #222;
+}
+
+/*
+#ed1c24
+    #f15a24
+    #f7931e
+    #fbb03b
+*/
+
 .nav-logo {
-    margin-top: 3.5rem;
+    margin-top: 3rem;
+    max-width: 10rem;
+    
+}
+
+.nav-logo-pics {
+    width: 100%;
+    max-width: 50px;
 }
 
 .nav-pics {
@@ -212,20 +252,35 @@ body {
 }
 
 .search-pics:hover button.btn-link {
-    color: #f15a24;
-    
+    color: #29abe2;
+}
+
+a.link-pics {
+    text-decoration: none;
+    color: #29abe2;
+    transition: color 0.5s;
+}
+
+.link-pics:hover {
+    color: #fff;
 }
 
 .container-pics {
     background: #222;
 }
 
-.container-pics * {
+.container-pics p {
     color: #fff;
 }
 
 .col-pics {
     padding: 0;
+}
+
+.col-pics-padding {
+    padding: 1rem;
+    display: inline-block;
+    text-align: center;
 }
 
 .img-show-preview {
@@ -405,6 +460,11 @@ body {
     color: #ccc;
 }
 
+.logo-index {
+    max-width: 200px;
+    margin: 1rem 1rem 0rem 1rem;
+}
+
 @media (min-width: 420px) {
     .hero object {
         width: 200%;
@@ -422,7 +482,7 @@ body {
         height: 50vh;
         min-height: 500px;
     } 
-    
+
 }
 
 @media (min-width: 992px) { /* col-md */
@@ -431,7 +491,24 @@ body {
         height: 700px; /* fallback if vh is not supported */
         height: 100vh;
         min-height: 700px;
-    }    
+    }  
+    
+    .col-pics-padding {
+        padding: 0 1.5rem;
+        text-align: left;
+    }
+    
+    .logo-index {
+        margin: 2rem 2rem 0 0;
+    }
+    
+    .nav-logo-pics, .navbar-links {
+        margin-left: 1.3rem;
+    }
+    
+    .search-pics, .login-wrapper {
+        margin-right: 2rem;
+    }
     
 }
 
