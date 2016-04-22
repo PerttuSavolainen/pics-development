@@ -43,14 +43,13 @@ class ImageController extends Controller
 
         if ($request->has('pics-search')) {
             $images = Image::getSearchImages($request->input('pics-search'));
-            //$images = Image::getImagesAndMessages($request->input('pics-search'));
+
         }
 
         else {
             // return collection of all images
             $images = Image::all();
-            //$images = Image::getImagesAndMessages();
-            
+
         }
         
         // add a message amount to array
@@ -60,7 +59,6 @@ class ImageController extends Controller
         }
         
         return view('image.index', compact('images', 'messages_count'));
-        //return view('image.index', compact('images'));
 
     }
     
@@ -112,12 +110,6 @@ class ImageController extends Controller
                 else return Redirect::route('image.index')->with('message', 'tiedosto virheellinen...');
             }
 
-            //$generated_url = ImageHandler::imageResize($img);
-
-            //$input_data = $request->all(); // WIP
-            
-            //return Redirect::route('image.index')->with('message', var_dump($img));
-
         }
 
     }
@@ -152,11 +144,9 @@ class ImageController extends Controller
     public function loadMoreImages(Request $request) {
         
         $offset = $request->file('callTime') * self::$loadAmount;
-        
         $images = Image::getImagesByDate($offset, self::$loadAmount);
-        
-        return $offset;
-        //return $images;
+
+        return $images;
         
     }
     

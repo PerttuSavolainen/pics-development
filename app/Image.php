@@ -39,7 +39,9 @@ class Image extends Model
      * @return collection of images
      */
     public static function getImagesAndMessages($search = '') {
-        /*
+        
+        // WIP
+        
         $images = DB::table('image')
                     ->join('message', 'image.id', '=', 'message.image_id')
                     ->select('*')
@@ -47,7 +49,7 @@ class Image extends Model
                     ->get();
                     
         return $images;
-        */
+        
     }
     
     
