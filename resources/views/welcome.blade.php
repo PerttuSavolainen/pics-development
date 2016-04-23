@@ -18,10 +18,10 @@
                     <div class="list-group">
                         <div class="list-group-item list-pics"><h3>Profiili</h3></div>
                         <div class="list-group-item list-pics">
-                            <a href="{{ url('/image/create') }}"><h4>Lähetä kuva</h4></a>
+                            <a href="{{ url('/image/create') }}"><h4 class="link-pics">Lähetä kuva</h4></a>
                         </div>
                         <div class="list-group-item list-pics">
-                            <a href="{{ url('/image/create') }}"><h4>Omat kuvat</h4></a>
+                            <a href="{{ url('/image/create') }}"><h4 class="link-pics">Omat kuvat</h4></a>
                         </div>
                     </div>
                 @else

@@ -128,39 +128,7 @@ body {
     
 }
 
-.button-pics:before, .button-pics:after, 
-.search-pics div:before, .search-pics div:after {
-    content: "";
-    position: absolute;
-    top: 0; 
-    height: 100%;
-    left: -1rem;
-    border-right: 1rem solid #999;
-    border-top: 1.5rem solid transparent;
-    border-bottom: 1.5rem solid transparent;
-}
 
-.button-pics:after, .search-pics div:after { 
-    left: auto;
-    right: -1rem;
-    border-right: none;
-    border-left: 1rem solid #999;
-    border-top: 1.5rem solid transparent;
-    border-bottom: 1.5rem solid transparent;
-}
-
-.search-pics div:after { 
-    border-right: none;
-    border-left: 1rem solid #999;
-    border-top: 1.75rem solid transparent;
-    border-bottom: 1.75rem solid transparent;
-}
-
-.search-pics div:before {
-    border-right: 1rem solid #999;
-    border-top: 1.75rem solid transparent;
-    border-bottom: 1.75rem solid transparent;
-}
 
 #loadMoreImages.button-pics:before {
     border-right: 1rem solid #999;
@@ -190,12 +158,10 @@ body {
 }
 
 .navbar-inverse .navbar-nav>li>a {
-    padding-top: 5rem;
     transition: all 0.5s;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover {
-    padding-top: 5rem;
     background: #fbb03b;
     color: #222;
 }
@@ -277,7 +243,6 @@ a.link-pics {
 }
 
 .img-show-preview {
-    padding: 3rem;
     text-align: center;
 }
 
@@ -428,17 +393,6 @@ a.link-pics {
     box-shadow: 0 0 6rem rgba(0,0,0,0.5);
 }
 
-.profile-list-pics  {
-    height: 600px;
-    overflow-y: auto;
-    
-}
-
-.message-field-pics {
-    height: 600px;
-    overflow-y: auto;
-}
-
 .message-pics {
     margin: 0;
 }
@@ -458,6 +412,18 @@ a.link-pics {
     margin: 1rem 1rem 0rem 1rem;
 }
 
+.footer {
+    text-align: center;
+}
+
+.navbar-toggle-pics {
+    margin-top: 4rem;     
+}
+
+form.navbar-form {
+    margin: 0;
+}
+
 @media (min-width: 420px) {
     .hero object {
         width: 200%;
@@ -475,6 +441,52 @@ a.link-pics {
         height: 50vh;
         min-height: 500px;
     } 
+    
+    .navbar-inverse .navbar-nav>li>a {
+        padding-top: 5rem;
+    }
+    
+    .navbar-inverse .navbar-nav>li>a:hover {
+        padding-top: 5rem;
+    }
+    
+    .button-pics:before, .button-pics:after, 
+    .search-pics div:before, .search-pics div:after {
+        content: "";
+        position: absolute;
+        top: 0; 
+        height: 100%;
+        left: -1rem;
+        border-right: 1rem solid #999;
+        border-top: 1.5rem solid transparent;
+        border-bottom: 1.5rem solid transparent;
+    }
+    
+    .button-pics:after, .search-pics div:after { 
+        left: auto;
+        right: -1rem;
+        border-right: none;
+        border-left: 1rem solid #999;
+        border-top: 1.5rem solid transparent;
+        border-bottom: 1.5rem solid transparent;
+    }
+    
+    .search-pics div:after { 
+        border-right: none;
+        border-left: 1rem solid #999;
+        border-top: 1.75rem solid transparent;
+        border-bottom: 1.75rem solid transparent;
+    }
+    
+    .search-pics div:before {
+        border-right: 1rem solid #999;
+        border-top: 1.75rem solid transparent;
+        border-bottom: 1.75rem solid transparent;
+    }
+    
+    form.navbar-form {
+        margin: 8px -15px;
+    }
 
 }
 
@@ -501,6 +513,33 @@ a.link-pics {
     
     .search-pics, .login-wrapper {
         margin-right: 2rem;
+    }
+    
+    .profile-list-pics  {
+        height: 600px;
+        overflow-y: auto;
+    }
+    
+    .message-field-pics {
+        height: 600px;
+        overflow-y: auto;
+    }
+    
+    .img-show-preview {
+        padding: 3rem;
+    }
+    
+    .footer {
+        text-align: left;
+        padding: 1rem;
+    }
+    
+    .footer .col-md-4:nth-child(2) {
+        text-align: center;
+    }
+    
+    .footer .col-md-4:nth-child(3) {
+        text-align: right;
     }
     
 }

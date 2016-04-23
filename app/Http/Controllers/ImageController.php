@@ -43,7 +43,6 @@ class ImageController extends Controller
 
         if ($request->has('pics-search')) {
             $images = Image::getSearchImages($request->input('pics-search'));
-
         }
 
         else {

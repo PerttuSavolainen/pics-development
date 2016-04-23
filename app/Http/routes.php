@@ -50,6 +50,9 @@ Route::group(['middleware' => ['web']], function () {
         return view('info');
     });
     
+    // image route
+    Route::get('/image', 'ImageController@index');
+    
     // for the ajax image loading
     Route::get('/loadImages', 'ImageController@loadMoreImages');
     Route::post('/loadImages', 'ImageController@loadMoreImages');

@@ -79,14 +79,14 @@
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
+              <button type="button" class="navbar-toggle collapsed navbar-toggle-pics" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">mobiilivalikko</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand nav-logo" href="{{ url('/') }}">
-                  <img class="nav-logo-pics" src="img/logo_white.png" alt="Pics-logo"/>
+                  <img class="nav-logo-pics" src="{{ url('/') }}/img/logo_white.png" alt="Pics-logo"/>
               </a>
             </div>
 
@@ -152,8 +152,33 @@
                 @yield('content')
             </section>
     </main> 
+    <div class="of-hidden">
+        <div class="color-line-pics"><div></div></div>
+    </div>
     
-    <footer style="padding: 5rem;">
+    <footer class="footer darker-gray-bg">
+        
+        <div class="container-fluid">
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Pics-kuvapalvelu</h3>
+                    <p>email: info@pics.fi</p>
+                    <p>puh. 567 456 3564</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Linkkejä</h3>
+                    <p><a href="{{ url('/info') }}">Sivun säännöt</a></p>
+                    <p><a href="{{ url('/info') }}">Linkki jonnekin tärkeään paikkaan</a></p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Jotain infoa</h3>
+                    <p><a href="#">Jotain täällä</a></p>
+                    <p><a href="#">Linkki jonnekin paikkaan</a></p>
+                </div>
+
+            </div>
+        </div>    
     </footer> 
 
     <!-- JavaScripts -->
